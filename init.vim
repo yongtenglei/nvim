@@ -32,13 +32,13 @@ set nobackup
 
 " no swap or
 "silent !mkdir -p ~/.config/nvim/tmp/backup
-"set directory=~/.config/nvim/tmp/backup,.
+"set directory=~/.config/nvim/tmp/backup
 set noswapfile
 
 " persistent undo
 set undofile
 silent !mkdir -p ~/.config/nvim/tmp/undo
-set undodir=~/.config/nvim/tmp/undo,.
+set undodir=~/.config/nvim/tmp/undo
 
 set spell spelllang=en_us
 
