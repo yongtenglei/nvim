@@ -1,0 +1,26 @@
+map u scrollUp
+map e scrollDown
+map n scrollLeft
+map i scrollRight
+map U scrollPageUp
+map E scrollPageDown
+map k enterInsertMode
+map m performFind
+map M performBackwardsFind
+map h goForward
+map N previousTab
+map I nextTab
+map ^ firstTab
+map $ lastTab
+unmap <c-e>
+unmap <c-y>
+unmap j
+unmap d
+unmap l
+unmap L
+unmap gT
+unmap gt
+unmap J
+unmap K
+unmap g0
+unmap g$
