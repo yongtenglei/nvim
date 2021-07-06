@@ -688,3 +688,10 @@ let g:suda_smart_edit = 1
 " ===
 noremap <leader>ff :FZF<CR>
 noremap <leader>ag :Ag<CR>
+
+" ===
+" === lazygit
+" ===
+
+noremap \g :Git
+noremap <c-g> :tabe<cr>:-tabmove<cr>:term lazygit<cr>
