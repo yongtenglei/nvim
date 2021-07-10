@@ -40,6 +40,15 @@ set shortmess+=c
 set completeopt=longest,noinsert,menuone,noselect,preview
 set ttyfast "should make scrolling faster
 set lazyredraw "same as above
+set hlsearch
+exec "nohlsearch"
+set incsearch
+set ignorecase
+set smartcase
+set mouse=a
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 let mapleader=" "
 noremap ; :
