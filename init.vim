@@ -221,9 +221,9 @@ noremap <silent> E 5j
 noremap <silent> \v v$h
 
 " go to the start of the line
-noremap <silent> <LEADER>H 0
+noremap <silent> H 0
 " go to the end of the line
-noremap <silent> <LEADER>I $
+noremap <silent> I $
 
 " ===
 " === Markdown Settings
