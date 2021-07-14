@@ -332,6 +332,7 @@ Plug 'mhinz/vim-startify'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaried'}
 "vim-surround
 Plug 'tpope/vim-surround'
+
 "fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -351,6 +352,7 @@ Plug 'scrooloose/nerdcommenter'
 "floaterm
 Plug 'voldikss/vim-floaterm'
 
+"theme
 Plug 'morhetz/gruvbox'
 
 "yay -S ranger python-pynvim ueberzug required
@@ -375,6 +377,10 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown'}
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+"Grep
+Plug 'mhinz/vim-grepper'
+
 call plug#end()
 
 "Airline theme
@@ -693,5 +699,29 @@ noremap <leader>ag :Ag<CR>
 " === lazygit
 " ===
 
-noremap \g :Git
+noremap \g :Git<cr>
 noremap <c-g> :tabe<cr>:-tabmove<cr>:term lazygit<cr>
+
+" ===
+" === Grep
+" ===
+let g:grepper       = {}
+let g:grepper.tools = ['grep', 'rg', 'git']
+
+" Search for the current word
+nnoremap <Leader>* :Grepper -cword -noprompt<CR>
+
+" Search for the current selection
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
+
+" grep alias, using <C-v><Space> to using grep
+function! SetupCommandAlias(input, output)
+  exec 'cabbrev <expr> '.a:input
+        \ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:input.'")'
+        \ .'? ("'.a:output.'") : ("'.a:input.'"))'
+endfunction
+call SetupCommandAlias("grep", "GrepperGrep")
+
+
+
