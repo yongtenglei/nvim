@@ -202,6 +202,38 @@ let g:terminal_color_14 = '#9AEDFE'
 if has('nvim') && executable('nvr')
   let $VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
 endif
+
+" ===
+" === go and quickfix
+" ===
+
+noremap cm :cnext<CR>
+noremap ck :cprevious<CR>
+nnoremap cc :cclose<CR>
+
+autocmd FileType go nmap gr  <Plug>(go-run)
+
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
+autocmd FileType go nmap gb :<C-u>call <SID>build_go_files()<CR>
+
+autocmd FileType go nmap gc <Plug>(go-coverage-toggle)
+
+let g:go_fmt_command = "goimports"
+
+
+
+
+
+
 " ===
 " === Basic Mappings
 " ===
@@ -235,8 +267,8 @@ nnoremap > >>
 noremap <LEADER>dw /\(\<\w\+\>\)\_s*\1
 
 " Space to Tab
-nnoremap <LEADER>tt :%s/	/\t/g
-vnoremap <LEADER>tt :s/	/\t/g
+"nnoremap <LEADER>gt :%s/	/\t/g
+"vnoremap <LEADER>gt :s/	/\t/g
 
 
 " Folding
@@ -343,6 +375,7 @@ Plug 'preservim/tagbar'
 
 "vim-snippets
 Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips'
 
 "visual-multi
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
@@ -370,6 +403,8 @@ Plug 'mhinz/vim-startify'
 
 "vim-go
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaried'}
+Plug 'AndrewRadev/splitjoin.vim'
+
 "vim-surround
 Plug 'tpope/vim-surround'
 
