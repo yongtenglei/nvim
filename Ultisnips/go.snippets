@@ -56,3 +56,8 @@ snippet cq "Current Question"
 app.result.questions[app.curResultIndex]${0}
 endsnippet
 
+snippet errp "err print"
+if err != nil {
+	panic(${0})
+}
+endsnippet
