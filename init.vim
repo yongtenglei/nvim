@@ -39,6 +39,15 @@ set noswapfile
 set undofile
 silent !mkdir -p ~/.config/nvim/tmp/undo
 set undodir=~/.config/nvim/tmp/undo
+"forgot undo in temp file
+if !has('nvim')
+  set undodir=~/.vim/undo
+endif
+augroup vimrc
+  autocmd!
+  autocmd BufWritePre /tmp/* setlocal noundofile
+augroup END
+
 
 set spell spelllang=en_us
 
@@ -143,12 +152,37 @@ set shell=/bin/bash
 " ===
 " === Terminal Behaviors
 " ===
+
+"term cursor
+if has('nvim')
+  highlight! link TermCursor Cursor
+  highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15
+endif
+
+"windows motion
+if has('nvim')
+  tnoremap <leader>n <c-\><c-n><c-w>h
+  tnoremap <leader>e <c-\><c-n><c-w>j
+  tnoremap <leader>u <c-\><c-n><c-w>k
+  tnoremap <leader>i <c-\><c-n><c-w>l
+endif
+
+"to normal mode
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+  tnoremap <C-v><Esc> <Esc>
+endif
+
 let g:neoterm_autoscroll = 1
 autocmd TermOpen term://* startinsert
 " go back to normal
-tnoremap <C-N> <C-\><C-N>
+"tnoremap <C-N> <C-\><C-N>
 " go back to last screen
-"tnoremap <C-O> <C-\><C-N><C-O>
+tnoremap <C-O> <C-\><C-N><C-O>
+
+"edit command line in nvim
+tnoremap <C-n> <C-x><C-e>
+
 let g:terminal_color_0  = '#000000'
 let g:terminal_color_1  = '#FF5555'
 let g:terminal_color_2  = '#50FA7B'
@@ -165,6 +199,9 @@ let g:terminal_color_12 = '#CAA9FA'
 let g:terminal_color_13 = '#FF92D0'
 let g:terminal_color_14 = '#9AEDFE'
 
+if has('nvim') && executable('nvr')
+  let $VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
+endif
 " ===
 " === Basic Mappings
 " ===
@@ -297,6 +334,9 @@ Plug 'lambdalisue/suda.vim'
 
 "Far find and replace
 Plug 'brooth/far.vim'
+
+"make session automatically
+Plug 'tpope/vim-obsession'
 
 "tarbar
 Plug 'preservim/tagbar'
@@ -510,6 +550,7 @@ let g:coc_global_extensions = [
 	\ 'coc-import-cost',
 	\ 'coc-json',
 	\ 'coc-lists',
+	\ 'coc-go',
 	\ 'coc-prettier',
 	\ 'coc-prisma',
 	\ 'coc-pyright',
