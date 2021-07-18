@@ -24,8 +24,20 @@ if err != nil {
 ${0}
 endsnippet
 
-snippet st "Println"
+snippet fn "Println"
 fmt.Println(${1})${0}
+endsnippet
+
+snippet ff "Printf"
+fmt.Println(${1})${0}
+endsnippet
+
+snippet ln "log.Println"
+log.Println(${1})${0}
+endsnippet
+
+snippet lf "log.Println"
+log.Println(${1})${0}
 endsnippet
 
 snippet start "Starting code"
