@@ -204,12 +204,22 @@ if has('nvim') && executable('nvr')
 endif
 
 " ===
-" === go and quickfix
+" === quickfix and localfix
 " ===
 
+noremap co :copen<CR>
 noremap cm :cnext<CR>
 noremap ck :cprevious<CR>
 nnoremap cc :cclose<CR>
+
+noremap bo :lopen<CR>
+noremap bm :lnext<CR>
+noremap bk :lprevious<CR>
+nnoremap bc :lclose<CR>
+
+" ===
+" === go config
+" ===
 
 autocmd FileType go nmap gr  <Plug>(go-run)
 
@@ -228,11 +238,46 @@ autocmd FileType go nmap gb :<C-u>call <SID>build_go_files()<CR>
 autocmd FileType go nmap gc <Plug>(go-coverage-toggle)
 
 let g:go_fmt_command = "goimports"
+let g:go_fmt_fail_silently = 1
 
+" Beautify go
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
 
+"autocmd BufNewFile,BufRead *.go setlocal tabstop=2 shiftwidth=2
 
+" check
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+let g:go_metalinter_deadline = "5s"
 
+" alternate in command mode
+autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 
+let g:go_def_mode = 'godef'
+
+" :GoDecls and :GoDeclsDir include
+let g:go_decls_includes = "func,type"
+"let g:go_decls_includes = "func"
+
+" go info
+autocmd FileType go nmap gh <Plug>(go-info)
+let g:go_auto_type_info = 1
+set updatetime=100
+
+"let g:go_auto_sameids = 1
+
+let g:go_play_browser_command = "firefox"
 
 " ===
 " === Basic Mappings
@@ -354,6 +399,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ojroques/vim-scrollstatus'
 
+" ctrl-p
+Plug 'ctrlpvim/ctrlp.vim'
 
 "html css javascript
 Plug 'gko/vim-coloresque'
@@ -429,6 +476,7 @@ Plug 'voldikss/vim-floaterm'
 
 "theme
 Plug 'morhetz/gruvbox'
+"Plug 'fatih/molokai'
 
 "yay -S ranger python-pynvim ueberzug required
 Plug 'kevinhwang91/rnvimr'
@@ -473,6 +521,11 @@ nnoremap <leader>tb :TagbarToggle<CR>
 set termguicolors
 colorscheme gruvbox
 set background=dark
+
+"molokai主题设置
+"let g:rehash256 = 1
+"let g:molokai_original = 1
+"colorscheme molokai
 
 "indentLine
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
