@@ -1,1 +1,1 @@
-Rey's nivm config
+Rey's neovim config
