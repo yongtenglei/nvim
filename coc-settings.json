@@ -74,7 +74,8 @@
 	"coc.preferences.formatOnSaveFiletypes": [
 		"python",
 		"c",
-    "cpp"
+    "cpp",
+    "go"
 	],
 	"yaml.format.enable": true,
 	"signature.target": "float",

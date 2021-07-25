@@ -51,13 +51,13 @@ augroup END
 
 set spell spelllang=en_us
 
-"inoremap ' ''<ESC>i
-"inoremap " ""<ESC>i
-"inoremap ( ()<ESC>i
-"inoremap < <><ESC>i
-"inoremap [ []<ESC>i
-"inoremap { {}<ESC>i
-"inoremap {<CR> {<CR>}<ESC>O
+inoremap ' ''<ESC>i
+inoremap " ""<ESC>i
+inoremap ( ()<ESC>i
+inoremap < <><ESC>i
+inoremap [ []<ESC>i
+inoremap { {}<ESC>i
+inoremap {<CR> {<CR>}<ESC>O
 
 
 set hlsearch
@@ -250,7 +250,7 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
 
-"autocmd BufNewFile,BufRead *.go setlocal tabstop=2 shiftwidth=2
+autocmd BufNewFile,BufRead,BufWritePost *.go retab
 
 " check
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
@@ -335,7 +335,7 @@ noremap <silent> E 5j
 noremap <silent> \v v$h
 
 " go to the start of the line
-noremap <silent> H 0
+noremap <silent> N 0
 " go to the end of the line
 noremap <silent> I $
 
