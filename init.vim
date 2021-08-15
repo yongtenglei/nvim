@@ -823,6 +823,9 @@ let g:suda_smart_edit = 1
 " ===
 noremap <leader>ff :FZF<CR>
 noremap <leader>ag :Ag<CR>
+noremap <leader>hs :History<CR>
+noremap <leader>hc :History:<CR>
+noremap <leader>bf :Buffers<CR>
 
 " ===
 " === lazygit
