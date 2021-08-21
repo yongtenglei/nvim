@@ -616,6 +616,9 @@ func! CompileRunGcc()
 	endif
 endfunc
 
+" html config
+let g:mkdp_browser="firefox"
+
 "rainbow parentheses
 let g:rainbow_active = 1
 
@@ -634,7 +637,7 @@ let g:coc_global_extensions = [
 	\ 'coc-explorer',
 	\ 'coc-flutter-tools',
 	\ 'coc-gitignore',
-	\ 'coc-html',
+	\ 'coc-git',
 	\ 'coc-import-cost',
 	\ 'coc-json',
 	\ 'coc-lists',
@@ -661,6 +664,7 @@ let g:coc_global_extensions = [
 	\ 'coc-htmldjango',
 	\ 'coc-htmlhint',
 	\ 'coc-html-css-support',
+	\ 'coc-highlight',
 	\ 'coc-java',
 	\ 'coc-markdownlint',
   \ 'coc-clangd']

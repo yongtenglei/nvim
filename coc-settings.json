@@ -75,7 +75,7 @@
 		"python",
 		"c",
     "cpp",
-    "go"
+    "html"
 	],
 	"yaml.format.enable": true,
 	"signature.target": "float",
