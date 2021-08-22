@@ -97,8 +97,8 @@ noremap srv <C-w>b<C-w>H
 " adjust windows size
 noremap <up> :res +5<CR>
 noremap <down> :res -5<CR>
-noremap <left> :vertical resize-5<CR>
-noremap <right> :vertical resize+5<CR>
+noremap <left> :vertical resize+5<CR>
+noremap <right> :vertical resize-5<CR>
 
 "tab management
 noremap tu :tabe<CR>
@@ -404,6 +404,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 "html css javascript
 Plug 'gko/vim-coloresque'
+Plug 'mattn/emmet-vim'
 
 "table mode
 Plug 'dhruvasagar/vim-table-mode'
@@ -618,6 +619,9 @@ endfunc
 
 " html config
 let g:mkdp_browser="firefox"
+" emment config
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
 
 "rainbow parentheses
 let g:rainbow_active = 1
@@ -632,6 +636,7 @@ let g:python3_host_prog = "/usr/bin/python3"
 "coc config
 let g:coc_global_extensions = [
 	\ 'coc-css',
+	\ 'coc-cssmodules',
 	\ 'coc-diagnostic',
 	\ 'coc-eslint',
 	\ 'coc-explorer',
