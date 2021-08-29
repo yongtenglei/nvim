@@ -204,7 +204,7 @@ if has('nvim') && executable('nvr')
 endif
 
 " ===
-" === quickfix and localfix
+" === quickfix and location fix
 " ===
 
 noremap co :copen<CR>
@@ -376,7 +376,7 @@ nnoremap \t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
 noremap <LEADER>/ :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
 
 " go to placeholder <++> and edit
-noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4i
+noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>4xi
 
 " Spelling Check with <space>sc
 noremap <LEADER>sc :set spell!<CR>
@@ -444,7 +444,7 @@ Plug 'liuchengxu/vista.vim'
 Plug 'simnalamburt/vim-mundo'
 
 "easy-mostion
-Plug 'easymotion/vim-easymotion'
+"Plug 'easymotion/vim-easymotion'
 
 "vim-starttify
 Plug 'mhinz/vim-startify'
