@@ -455,6 +455,8 @@ Plug 'AndrewRadev/splitjoin.vim'
 
 "vim-surround
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tople/vim-speeddating'
 
 "fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -837,6 +839,15 @@ noremap <leader>ag :Ag<CR>
 noremap <leader>hs :History<CR>
 noremap <leader>hc :History:<CR>
 noremap <leader>bf :Buffers<CR>
+
+" ===
+" === vim-repeat
+" ===
+
+noremap l <Plug>(RepeatUndo)
+if empty(mapcheck("<Plug>(RepeatUndo)"))
+  nnoremap <Plug>(RepeatUndo) u
+endif
 
 " ===
 " === lazygit
