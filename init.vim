@@ -1,10 +1,10 @@
 "
-" ____			   __	 ___
-"|  _ \ ___ _   _	\ \   / (_)_ __ ___
+" ____               __     ___
+"|  _ \ ___ _   _    \ \   / (_)_ __ ___
 "| |_) / _ \ | | |____\ \ / /| | '_ ` _ \
 "|  _ <  __/ |_| |_____\ V / | | | | | | |
-"|_| \_\___|\__, |	  \_/  |_|_| |_| |_|
-"		   |___/
+"|_| \_\___|\__, |      \_/  |_|_| |_| |_|
+"            |___/
 " ===
 " === Auto load for first time uses
 " ===
@@ -312,8 +312,8 @@ nnoremap > >>
 noremap <LEADER>dw /\(\<\w\+\>\)\_s*\1
 
 " Space to Tab
-"nnoremap <LEADER>gt :%s/	/\t/g
-"vnoremap <LEADER>gt :s/	/\t/g
+"nnoremap <LEADER>gt :%s/ /\t/g
+"vnoremap <LEADER>gt :s/  /\t/g
 
 
 " Folding
@@ -548,73 +548,73 @@ nmap ss <Plug>(easymotion-s2)
 "func! CompileRunGcc()
   "exec "w"
   "if &filetype == 'c'
-	"exec "!g++ % -o %<"
-	"exec "!time ./%<"
+  "exec "!g++ % -o %<"
+  "exec "!time ./%<"
   "elseif &filetype == 'cpp'
-	"exec "!g++ % -o %<"
-	"exec "!time ./%<"
+  "exec "!g++ % -o %<"
+  "exec "!time ./%<"
   "elseif &filetype == 'java'
-	"exec "!javac %"
-	"exec "!time java %<"
+  "exec "!javac %"
+  "exec "!time java %<"
   "elseif &filetype == 'sh'
-	":!time bash %
+  ":!time bash %
   "elseif &filetype == 'python'
-	"silent! exec "!clear"
-	"exec "!time python3 %"
+  "silent! exec "!clear"
+  "exec "!time python3 %"
   "elseif &filetype == 'html'
-	"exec "!firefox % &"
+  "exec "!firefox % &"
   "elseif &filetype == 'markdown'
-	"exec "MarkdownPreview"
+  "exec "MarkdownPreview"
   "elseif &filetype == 'vimwiki'
-	"exec "MarkdownPreview"
+  "exec "MarkdownPreview"
   "elseif &filetype == 'go'
-	"exec ":GoRun %"
+  "exec ":GoRun %"
   "endif
 "endfunc
 
 " Compile function
 noremap r :call CompileRunGcc()<CR>
 func! CompileRunGcc()
-	exec "w"
-	if &filetype == 'c'
-		exec "!g++ % -o %<"
-		exec "!time ./%<"
-	elseif &filetype == 'cpp'
-		set splitbelow
-		exec "!g++ -std=c++11 % -Wall -o %<"
-		:sp
-		:res -15
-		:term ./%<
-	elseif &filetype == 'java'
-		set splitbelow
-		:sp
-		:res -5
-		term javac % && time java %<
-	elseif &filetype == 'sh'
-		:!time bash %
-	elseif &filetype == 'python'
-		set splitbelow
-		:sp
-		:term python3 %
-	elseif &filetype == 'html'
-		silent! exec "!".g:mkdp_browser." % &"
-	elseif &filetype == 'markdown'
-		exec "InstantMarkdownPreview"
-	elseif &filetype == 'tex'
-		silent! exec "VimtexStop"
-		silent! exec "VimtexCompile"
-	elseif &filetype == 'dart'
-		exec "CocCommand flutter.run -d ".g:flutter_default_device." ".g:flutter_run_args
-		silent! exec "CocCommand flutter.dev.openDevLog"
-	elseif &filetype == 'javascript'
-		set splitbelow
-		:sp
-		:term export DEBUG="INFO,ERROR,WARNING"; node --trace-warnings .
-	elseif &filetype == 'go'
-		set splitbelow
-		:sp
-		:term go run .
-	endif
+  exec "w"
+  if &filetype == 'c'
+    exec "!g++ % -o %<"
+    exec "!time ./%<"
+  elseif &filetype == 'cpp'
+    set splitbelow
+    exec "!g++ -std=c++11 % -Wall -o %<"
+    :sp
+    :res -15
+    :term ./%<
+  elseif &filetype == 'java'
+    set splitbelow
+    :sp
+    :res -5
+    term javac % && time java %<
+  elseif &filetype == 'sh'
+    :!time bash %
+  elseif &filetype == 'python'
+    set splitbelow
+    :sp
+    :term python3 %
+  elseif &filetype == 'html'
+    silent! exec "!".g:mkdp_browser." % &"
+  elseif &filetype == 'markdown'
+    exec "InstantMarkdownPreview"
+  elseif &filetype == 'tex'
+    silent! exec "VimtexStop"
+    silent! exec "VimtexCompile"
+  elseif &filetype == 'dart'
+    exec "CocCommand flutter.run -d ".g:flutter_default_device." ".g:flutter_run_args
+    silent! exec "CocCommand flutter.dev.openDevLog"
+  elseif &filetype == 'javascript'
+    set splitbelow
+    :sp
+    :term export DEBUG="INFO,ERROR,WARNING"; node --trace-warnings .
+  elseif &filetype == 'go'
+    set splitbelow
+    :sp
+    :term go run .
+  endif
 endfunc
 
 " html config
@@ -635,43 +635,43 @@ let g:python3_host_prog = "/usr/bin/python3"
 
 "coc config
 let g:coc_global_extensions = [
-	\ 'coc-css',
-	\ 'coc-cssmodules',
-	\ 'coc-diagnostic',
-	\ 'coc-eslint',
-	\ 'coc-explorer',
-	\ 'coc-flutter-tools',
-	\ 'coc-gitignore',
-	\ 'coc-git',
-	\ 'coc-import-cost',
-	\ 'coc-json',
-	\ 'coc-lists',
-	\ 'coc-go',
-	\ 'coc-prettier',
-	\ 'coc-prisma',
-	\ 'coc-pyright',
-	\ 'coc-clangd',
-	\ 'coc-snippets',
-	\ 'coc-sourcekit',
-	\ 'coc-stylelint',
-	\ 'coc-syntax',
-	\ 'coc-tailwindcss',
-	\ 'coc-tasks',
-	\ 'coc-translator',
-	\ 'coc-tslint-plugin',
-	\ 'coc-tsserver',
-	\ 'coc-vetur',
-	\ 'coc-vimlsp',
-	\ 'coc-yaml',
-	\ 'coc-yank',
-	\ 'coc-pairs',
-	\ 'coc-html',
-	\ 'coc-htmldjango',
-	\ 'coc-htmlhint',
-	\ 'coc-html-css-support',
-	\ 'coc-highlight',
-	\ 'coc-java',
-	\ 'coc-markdownlint',
+  \ 'coc-css',
+  \ 'coc-cssmodules',
+  \ 'coc-diagnostic',
+  \ 'coc-eslint',
+  \ 'coc-explorer',
+  \ 'coc-flutter-tools',
+  \ 'coc-gitignore',
+  \ 'coc-git',
+  \ 'coc-import-cost',
+  \ 'coc-json',
+  \ 'coc-lists',
+  \ 'coc-go',
+  \ 'coc-prettier',
+  \ 'coc-prisma',
+  \ 'coc-pyright',
+  \ 'coc-clangd',
+  \ 'coc-snippets',
+  \ 'coc-sourcekit',
+  \ 'coc-stylelint',
+  \ 'coc-syntax',
+  \ 'coc-tailwindcss',
+  \ 'coc-tasks',
+  \ 'coc-translator',
+  \ 'coc-tslint-plugin',
+  \ 'coc-tsserver',
+  \ 'coc-vetur',
+  \ 'coc-vimlsp',
+  \ 'coc-yaml',
+  \ 'coc-yank',
+  \ 'coc-pairs',
+  \ 'coc-html',
+  \ 'coc-htmldjango',
+  \ 'coc-htmlhint',
+  \ 'coc-html-css-support',
+  \ 'coc-highlight',
+  \ 'coc-java',
+  \ 'coc-markdownlint',
   \ 'coc-clangd']
 
 set hidden
@@ -808,7 +808,7 @@ let g:vista#renderer#icons = {
 \   "variable": "\uf71b",
 \  }
 " function! NearestMethodOrFunction() abort
-" 	return get(b:, 'vista_nearest_method_or_function', '')
+"   return get(b:, 'vista_nearest_method_or_function', '')
 " endfunction
 " set statusline+=%{NearestMethodOrFunction()}
 " autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
@@ -835,6 +835,11 @@ noremap <leader>ag :Ag<CR>
 noremap <leader>hs :History<CR>
 noremap <leader>hc :History:<CR>
 noremap <leader>bf :Buffers<CR>
+
+" ===
+" === mundo
+" ===
+nnoremap md :MundoToggle<CR>
 
 " ===
 " === lazygit
