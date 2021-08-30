@@ -1,10 +1,10 @@
 "
-" ____               __     ___
-"|  _ \ ___ _   _    \ \   / (_)_ __ ___
+" ____         __  ___
+"|  _ \ ___ _   _ \ \   / (_)_ __ ___
 "| |_) / _ \ | | |____\ \ / /| | '_ ` _ \
 "|  _ <  __/ |_| |_____\ V / | | | | | | |
-"|_| \_\___|\__, |      \_/  |_|_| |_| |_|
-"            |___/
+"|_| \_\___|\__, |    \_/  |_|_| |_| |_|
+"      |___/
 " ===
 " === Auto load for first time uses
 " ===
@@ -129,7 +129,7 @@ set backspace=indent,eol,start
 set foldmethod=indent
 set foldlevel=99
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+let &t_SR = "\<sc>]50;CursorShape=2\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 set laststatus=2
 set autochdir
@@ -505,6 +505,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Grep
 Plug 'mhinz/vim-grepper'
 
+" Did you mean
+Plug 'EinfachToll/DidYouMean'
 call plug#end()
 
 "Airline theme
@@ -837,14 +839,8 @@ noremap <leader>hc :History:<CR>
 noremap <leader>bf :Buffers<CR>
 
 " ===
-" === mundo
-" ===
-nnoremap md :MundoToggle<CR>
-
-" ===
 " === lazygit
 " ===
-
 noremap \g :Git<cr>
 noremap <c-g> :tabe<cr>:-tabmove<cr>:term lazygit<cr>
 
