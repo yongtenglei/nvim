@@ -455,7 +455,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 
 "vim-surround
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
+"Plug 'tpope/vim-repeat'
 Plug 'tople/vim-speeddating'
 
 "fzf
@@ -479,6 +479,7 @@ Plug 'voldikss/vim-floaterm'
 
 "theme
 Plug 'morhetz/gruvbox'
+Plug 'joshdick/onedark.vim'
 "Plug 'fatih/molokai'
 
 "yay -S ranger python-pynvim ueberzug required
@@ -512,25 +513,32 @@ Plug 'EinfachToll/DidYouMean'
 call plug#end()
 
 "Airline theme
-let g:airline_theme='gruvbox'
+"let g:airline_theme='gruvbox'
+let g:airline_theme='onedark'
+
 "scrollstatus
 let g:airline_section_x = '%{ScrollStatus()}'
 let g:scrollstatus_size = 12
 let g:scrollstatus_symbol_track = '-'
 let g:scrollstatus_symbol_bar = '*'
 
-"tarbar
-nnoremap <leader>tb :TagbarToggle<CR>
-
 "gruvbox主题设置
 set termguicolors
-colorscheme gruvbox
-set background=dark
+"colorscheme gruvbox
+"set background=dark
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 "molokai主题设置
 "let g:rehash256 = 1
 "let g:molokai_original = 1
 "colorscheme molokai
+
+"onedark主题设置
+colorscheme onedark
+
+"tarbar
+nnoremap <leader>tb :TagbarToggle<CR>
+
 
 "indentLine
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
@@ -839,15 +847,6 @@ noremap <leader>ag :Ag<CR>
 noremap <leader>hs :History<CR>
 noremap <leader>hc :History:<CR>
 noremap <leader>bf :Buffers<CR>
-
-" ===
-" === vim-repeat
-" ===
-
-noremap l <Plug>(RepeatUndo)
-if empty(mapcheck("<Plug>(RepeatUndo)"))
-  nnoremap <Plug>(RepeatUndo) u
-endif
 
 " ===
 " === lazygit
