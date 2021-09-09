@@ -12,8 +12,8 @@ for _, ${1:thing} := range ${2:things} {
 endsnippet
 
 snippet fori "For loop i"
-for i := 0; i < n; i++ {
-	${1://TODO}
+for ${1:i} := ${2:0}; i < ${3:n}; i++ {
+	${4://TODO}
 }
 endsnippet
 
@@ -61,3 +61,8 @@ if err != nil {
 	panic(${0})
 }
 endsnippet
+
+snippet tag "Add json tag"
+\`json:"${0:tag}"\`
+endsnippet
+

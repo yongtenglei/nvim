@@ -120,7 +120,7 @@ set cindent
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
-set list
+set nolist
 set listchars=tab:▸\ ,trail:▫
 set scrolloff=10
 set tw=0
@@ -212,10 +212,10 @@ noremap cm :cnext<CR>
 noremap ck :cprevious<CR>
 nnoremap cc :cclose<CR>
 
-noremap bo :lopen<CR>
-noremap bm :lnext<CR>
-noremap bk :lprevious<CR>
-nnoremap bc :lclose<CR>
+noremap zo :lopen<CR>
+noremap zm :lnext<CR>
+noremap zk :lprevious<CR>
+nnoremap zc :lclose<CR>
 
 " ===
 " === go config
@@ -239,6 +239,8 @@ autocmd FileType go nmap gc <Plug>(go-coverage-toggle)
 
 let g:go_fmt_command = "goimports"
 let g:go_fmt_fail_silently = 1
+" Add tags using snake_case by default, you can set camelcase also
+"let g:go_addtags_transform = "camelcase"
 
 " Beautify go
 let g:go_highlight_types = 1
@@ -250,12 +252,12 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
 
-autocmd BufNewFile,BufRead,BufWritePost *.go retab
+"autocmd BufNewFile,BufRead,BufWritePost *.go retab
 
 " check
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_autosave = 1
-let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_deadline = "5s"
 
 " alternate in command mode
@@ -264,6 +266,7 @@ autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit'
 autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 
+"also guru by default
 let g:go_def_mode = 'godef'
 
 " :GoDecls and :GoDeclsDir include
@@ -433,6 +436,7 @@ Plug 'gcmt/wildfire.vim'
 
 " easy-align
 Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-peekaboo'
 
 "vista.vim
 Plug 'liuchengxu/vista.vim'
@@ -441,7 +445,7 @@ Plug 'liuchengxu/vista.vim'
 "Plug 'dense-analysis/ale'
 
 "mundo.vim
-Plug 'simnalamburt/vim-mundo'
+"Plug 'simnalamburt/vim-mundo'
 
 "easy-mostion
 "Plug 'easymotion/vim-easymotion'
@@ -456,7 +460,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 "vim-surround
 Plug 'tpope/vim-surround'
 "Plug 'tpope/vim-repeat'
-Plug 'tople/vim-speeddating'
+"Plug 'tople/vim-speeddating'
 
 "fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -770,6 +774,9 @@ nnoremap tt :CocCommand explorer<CR>
 " coc-translator
 nmap ts <Plug>(coc-translator-p)
 
+" coc-yank
+nnoremap <silent> <leader>y :<C-u>CocList -A --normal yank<cr>
+
 
 " rnvimr
 " Make Ranger replace Netrw and be the file explorer
@@ -875,5 +882,23 @@ function! SetupCommandAlias(input, output)
 endfunction
 call SetupCommandAlias("grep", "GrepperGrep")
 
+" ===
+" === vim-visual-multi
+" ===
+let g:VM_theme             = 'iceblue'
+"let g:VM_default_mappings = 0
+"let g:VM_leader                     = {'default': ',', 'visual': ',', 'buffer': ','}
+let g:VM_maps                       = {}
+let g:VM_custom_motions             = {'n': 'h', 'i': 'l', 'u': 'k', 'e': 'j', 'N': '0', 'I': '$', 'h': 'e'}
+let g:VM_maps['i']                  = 'k'
+let g:VM_maps['I']                  = 'K'
+let g:VM_maps['Find Under']         = '<C-k>'
+let g:VM_maps['Find Subword Under'] = '<C-k>'
+let g:VM_maps['Find Next']          = ''
+let g:VM_maps['Find Prev']          = ''
+let g:VM_maps['Remove Region']      = 'q'
+let g:VM_maps['Skip Region']        = '<c-n>'
+let g:VM_maps["Undo"]               = 'l'
+let g:VM_maps["Redo"]               = '<C-r>'
 
 
