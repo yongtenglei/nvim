@@ -78,7 +78,8 @@
     "html",
     "css",
     "javascript",
-    "vue"
+    "vue",
+    "markdown"
   ],
   "yaml.format.enable": true,
   "signature.target": "float",

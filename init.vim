@@ -428,6 +428,9 @@ Plug 'preservim/tagbar'
 Plug 'honza/vim-snippets'
 "Plug 'SirVer/ultisnips'
 
+" vimtex
+Plug 'lervag/vimtex'
+
 "visual-multi
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
@@ -678,6 +681,7 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-vetur',
   \ 'coc-vimlsp',
+  \ 'coc-vimtex',
   \ 'coc-yaml',
   \ 'coc-yank',
   \ 'coc-pairs',
@@ -847,6 +851,29 @@ let g:far#enable_undo=1
 let g:suda_smart_edit = 1
 
 " ===
+" === vimtex
+" ===
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_view_general_viewer = 'zathura'
+let g:vimtex_compiler_progname = 'nvr'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+let g:vimtex_toc_config = {
+\ 'name' : 'TOC',
+\ 'layers' : ['content', 'todo', 'include'],
+\ 'split_width' : 25,
+\ 'todo_sorted' : 0,
+\ 'show_help' : 1,
+\ 'show_numbers' : 1,
+\}
+
+autocmd FileType tex noremap \tt :VimtexTocToggle<cr>
+"autocmd FileType tex noremap <leader>c <localleader>lc
+"autocmd FileType tex noremap <leader>v <localleader>lv
+
+" ===
 " === fzf and ag
 " ===
 noremap <leader>ff :FZF<CR>
@@ -901,4 +928,15 @@ let g:VM_maps['Skip Region']        = '<c-n>'
 let g:VM_maps["Undo"]               = 'l'
 let g:VM_maps["Redo"]               = '<C-r>'
 
+" useful stuff from luke
 
+" Disables automatic commenting on newline:
+	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" Perform dot commands over visual blocks:
+	vnoremap . :normal .<CR>
+
+
+" Automatically deletes all trailing whitespace and newlines at end of file on save.
+	autocmd BufWritePre * %s/\s\+$//e
+	autocmd BufWritePre * %s/\n\+\%$//e
+	autocmd BufWritePre *.[ch] %s/\%$/\r/e
