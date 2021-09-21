@@ -481,6 +481,9 @@ Plug 'scrooloose/nerdcommenter'
 "go-to 插件 <leader>d definition (K, <leader>n / r(rename))
 "Plug 'davidhalter/jedi-vim'
 
+" fl
+Plug 'ptzz/lf.vim'
+
 "floaterm
 Plug 'voldikss/vim-floaterm'
 
@@ -490,7 +493,7 @@ Plug 'joshdick/onedark.vim'
 "Plug 'fatih/molokai'
 
 "yay -S ranger python-pynvim ueberzug required
-Plug 'kevinhwang91/rnvimr'
+"Plug 'kevinhwang91/rnvimr'
 
 " xtabline
 Plug 'mg979/vim-xtabline'
@@ -782,32 +785,39 @@ nmap ts <Plug>(coc-translator-p)
 nnoremap <silent> <leader>y :<C-u>CocList -A --normal yank<cr>
 
 
-" rnvimr
-" Make Ranger replace Netrw and be the file explorer
-let g:rnvimr_enable_ex = 1
+"" rnvimr
+"" Make Ranger replace Netrw and be the file explorer
+"let g:rnvimr_enable_ex = 1
 
-" Make Ranger to be hidden after picking a file
-let g:rnvimr_enable_picker = 1
+"" Make Ranger to be hidden after picking a file
+"let g:rnvimr_enable_picker = 1
 
-" Disable a border for floating window
-let g:rnvimr_draw_border = 0
+"" Disable a border for floating window
+"let g:rnvimr_draw_border = 0
 
-highlight link RnvimrNormal CursorLine
-nnoremap <silent> R :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
-let g:rnvimr_action = {
-            \ '<C-t>': 'NvimEdit tabedit',
-            \ '<C-x>': 'NvimEdit split',
-            \ '<C-v>': 'NvimEdit vsplit',
-            \ 'gw': 'JumpNvimCwd',
-            \ 'yw': 'EmitRangerCwd'
-            \ }
-let g:rnvimr_layout = { 'relative': 'editor',
-            \ 'width': &columns,
-            \ 'height': &lines,
-            \ 'col': 0,
-            \ 'row': 0,
-            \ 'style': 'minimal' }
-let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
+"highlight link RnvimrNormal CursorLine
+"nnoremap <silent> R :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
+"let g:rnvimr_action = {
+            "\ '<C-t>': 'NvimEdit tabedit',
+            "\ '<C-x>': 'NvimEdit split',
+            "\ '<C-v>': 'NvimEdit vsplit',
+            "\ 'gw': 'JumpNvimCwd',
+            "\ 'yw': 'EmitRangerCwd'
+            "\ }
+"let g:rnvimr_layout = { 'relative': 'editor',
+            "\ 'width': &columns,
+            "\ 'height': &lines,
+            "\ 'col': 0,
+            "\ 'row': 0,
+            "\ 'style': 'minimal' }
+"let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
+
+" ===
+" === lf
+" ===
+let g:lf_map_keys = 0
+map <leader>fl :Lf<CR>
+let g:lf_replace_netrw = 1 " Open lf when vim opens a directory
 
 "xtabline
 let g:xtabline_settings = {}
@@ -935,8 +945,10 @@ let g:VM_maps["Redo"]               = '<C-r>'
 " Perform dot commands over visual blocks:
 	vnoremap . :normal .<CR>
 
-
 " Automatically deletes all trailing whitespace and newlines at end of file on save.
 	autocmd BufWritePre * %s/\s\+$//e
 	autocmd BufWritePre * %s/\n\+\%$//e
 	autocmd BufWritePre *.[ch] %s/\%$/\r/e
+
+  " Runs a script that cleans out tex build files whenever I close out of a .tex file.
+	autocmd VimLeave *.tex !texclear %
