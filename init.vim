@@ -70,10 +70,10 @@ noremap - Nzz
 noremap <LEADER><CR> :nohlsearch<CR>
 
 "进行分屏
-noremap si :set splitright<CR>:vsplit<CR>
-noremap sl :set nosplitright<CR>:vsplit<CR>
-noremap su:set nosplitbelow<CR>:split<CR>
+noremap su :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
 noremap se :set splitbelow<CR>:split<CR>
+noremap sn :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
+noremap si :set splitright<CR>:vsplit<CR>
 
 "分屏cursor切换
 noremap <LEADER>ww <C-w>w
@@ -430,6 +430,8 @@ Plug 'honza/vim-snippets'
 
 " vimtex
 Plug 'lervag/vimtex'
+Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
+"Plug 'wjakob/wjakob.vim'
 
 "visual-multi
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
@@ -491,6 +493,8 @@ Plug 'voldikss/vim-floaterm'
 Plug 'morhetz/gruvbox'
 Plug 'joshdick/onedark.vim'
 "Plug 'fatih/molokai'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'drewtempelmeyer/palenight.vim'
 
 "yay -S ranger python-pynvim ueberzug required
 "Plug 'kevinhwang91/rnvimr'
@@ -533,10 +537,17 @@ let g:scrollstatus_symbol_track = '-'
 let g:scrollstatus_symbol_bar = '*'
 
 "gruvbox主题设置
-set termguicolors
+if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+
+if (has("termguicolors"))
+  set termguicolors
+endif
+
 "colorscheme gruvbox
 "set background=dark
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 "molokai主题设置
 "let g:rehash256 = 1
@@ -544,7 +555,19 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 "colorscheme molokai
 
 "onedark主题设置
+let g:onedark_termcolors=256
+let g:onedark_terminal_italics=1
 colorscheme onedark
+
+"dracula theme
+"colorscheme dracula
+
+"palenight theme
+" Italics for my favorite color scheme
+"let g:palenight_terminal_italics=1
+"set background=dark
+"colorscheme palenight
+"let g:airline_theme = "palenight"
 
 "tarbar
 nnoremap <leader>tb :TagbarToggle<CR>
@@ -816,7 +839,7 @@ nnoremap <silent> <leader>y :<C-u>CocList -A --normal yank<cr>
 " === lf
 " ===
 let g:lf_map_keys = 0
-map <leader>fl :Lf<CR>
+map <leader>ff :Lf<CR>
 let g:lf_replace_netrw = 1 " Open lf when vim opens a directory
 
 "xtabline
@@ -868,7 +891,8 @@ let g:vimtex_view_method='zathura'
 let g:vimtex_view_general_viewer = 'zathura'
 let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_quickfix_mode=0
-set conceallevel=1
+"set conceallevel=1
+set conceallevel=2 "more Beautiful"
 let g:tex_conceal='abdmg'
 let g:vimtex_toc_config = {
 \ 'name' : 'TOC',
@@ -878,7 +902,9 @@ let g:vimtex_toc_config = {
 \ 'show_help' : 1,
 \ 'show_numbers' : 1,
 \}
-
+let g:Tex_CompileRule_pdf = 'xelatex -synctex=1 --interaction=nonstopmode $*'
+let g:tex_superscripts= "[0-9a-zA-W.,:;+-<>/()=]"
+let g:tex_subscripts= "[0-9aehijklmnoprstuvx,+-/().]"
 autocmd FileType tex noremap \tt :VimtexTocToggle<cr>
 "autocmd FileType tex noremap <leader>c <localleader>lc
 "autocmd FileType tex noremap <leader>v <localleader>lv
@@ -886,7 +912,7 @@ autocmd FileType tex noremap \tt :VimtexTocToggle<cr>
 " ===
 " === fzf and ag
 " ===
-noremap <leader>ff :FZF<CR>
+noremap <leader>fz :FZF<CR>
 noremap <leader>ag :Ag<CR>
 noremap <leader>hs :History<CR>
 noremap <leader>hc :History:<CR>
