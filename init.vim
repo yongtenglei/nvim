@@ -148,6 +148,12 @@ filetype plugin on
 filetype plugin indent on
 set shell=/bin/bash
 
+" ===
+" === useful script
+" ===
+"source ./codeinfo.vim
+"autocmd BufNewFile *.sh,*.script exec ":call InfoBash()"
+"autocmd BufNewFile *.c,*.cpp exec ":call InfoCFamily()"
 
 " ===
 " === Terminal Behaviors
@@ -695,7 +701,6 @@ let g:coc_global_extensions = [
   \ 'coc-prettier',
   \ 'coc-prisma',
   \ 'coc-pyright',
-  \ 'coc-clangd',
   \ 'coc-snippets',
   \ 'coc-sourcekit',
   \ 'coc-stylelint',
@@ -716,9 +721,9 @@ let g:coc_global_extensions = [
   \ 'coc-htmlhint',
   \ 'coc-html-css-support',
   \ 'coc-highlight',
+  \ 'coc-clangd',
   \ 'coc-java',
-  \ 'coc-markdownlint',
-  \ 'coc-clangd']
+  \ 'coc-markdownlint']
 
 set hidden
 
