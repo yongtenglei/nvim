@@ -294,7 +294,11 @@ let g:go_play_browser_command = "firefox"
 noremap ; :
 
 " Save
-noremap <c-u> :w<CR>
+noremap <c-u> :w<ESC>
+
+" For ESC in insert mode
+inoremap <c-u> <ESC>
+
 
 " Undo operations
 noremap l u
