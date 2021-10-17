@@ -534,6 +534,11 @@ Plug 'mhinz/vim-grepper'
 
 " Did you mean
 Plug 'EinfachToll/DidYouMean'
+
+" vim-dadbod
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
+
 call plug#end()
 
 "Airline theme
@@ -727,6 +732,7 @@ let g:coc_global_extensions = [
   \ 'coc-highlight',
   \ 'coc-clangd',
   \ 'coc-java',
+  \ 'coc-db',
   \ 'coc-markdownlint']
 
 set hidden
